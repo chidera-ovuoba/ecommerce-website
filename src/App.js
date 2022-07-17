@@ -15,23 +15,12 @@ const App = () => {
       <Navbar />
       </div>
           <Routes>
-          <Route exact path='/'>
-          <Home/>
-          </Route>
-          <Route path='/products'>
-           <Products/>
-         </Route>
-          <Route path='/signin'>
-            <div className='grid place-items-center'>
-            <SignIn />
-            </div> 
-          </Route>
-          <Route path='/singleproduct'>
-          <SingleProduct />
-          </Route>
-          <Route path='/carts'>
-          <Carts />
-          </Route>
+          <Route exact path='/' element={<Home />}></Route>
+          <Route exact path='/products' element={<Products/>}></Route>
+          <Route exact path='/signin' element={<SignIn />}></Route>
+          <Route exact path='/singleproduct' element={<SingleProduct />}></Route>
+          <Route exact path='/carts' element={<Carts />}></Route>
+         
         </Routes>
       </Router> 
       </>

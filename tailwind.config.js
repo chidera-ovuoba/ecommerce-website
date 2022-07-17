@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/App.js","./src/components/{Navbar,Search,Silder,Products}.js","./src/pages/{Sign_in,SingleProduct,Carts,Sign_up,Home}.js"],
+  content: ["./src/App.js","./src/components/{Navbar,Search,Silder,Product}.js","./src/pages/{SignIn,SingleProduct,Carts,SignUp,Home,Products}.js"],
   theme: {
     extend: {
         boxShadow: {
