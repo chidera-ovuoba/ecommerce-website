@@ -10,11 +10,12 @@ if (loading) {
   }
 return (
 <div>
+<div className='flex items-center justify-center h-screen w-screen'>
       <Slider {...ProductsData[sliderIndex].fields.image[0]} />
-
-      <div className='mx-20 grid grid-cols-3 place-items-center mb-4'>
+  </div>
+      <div className='mx-20 grid grid-cols-3 place-items-center gap-2 mb-4'>
       {ProductsData.map((item, i) => {
-        return <Product {...item.fields} key={i} />
+        return <Product {...item.fields} key={item.id} id={i} />
       })}
      
       </div>

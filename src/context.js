@@ -4,8 +4,10 @@ const appContext = React.createContext();
 const url = 'https://course-api.com/javascript-store-products';
 const initialState = {
     ProductsData: [],
-    sliderIndex:0
-    
+    sliderIndex: 0,
+    cart:[],
+    total: 0,
+    id:0
 }
 function AppProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -15,10 +17,13 @@ function AppProvider({ children }) {
         setLoading(true);
         try {
             const response = await fetch(url);
-            const data = await response.json();
+            let data = await response.json();
+            data = data.map((item) => {
+               return {...item,amount:1} 
+            })
             console.log(data);
             dispatch({ type: 'DISPLAY_DATA', payload: data });
-
+            
             setLoading(false)
 
         } catch (error) {
@@ -42,6 +47,10 @@ function AppProvider({ children }) {
         }
     }, [loading])
     
+    useEffect(() => {
+      dispatch({type:'GET_TOTAL'})  
+    },[state.cart])
+    
     
     function checkNumber(number,number2){
         // console.log(number2);
@@ -54,14 +63,23 @@ function AppProvider({ children }) {
         }
         return number += number2 ;
     }
-   
+    function addToCart(id) {
+        dispatch({ type: 'ADD_CART', payload: id });
+    }
+    function changeAmount(id, value,type) {
+        // console.log(id, value);
+        dispatch({ type: 'CHANGE_AMOUNT', payload: { id, value,type } });
+    }
 
+    function removeItem(id) {
+        dispatch({ type: "REMOVE_ITEM", payload: id });
+    }
     
 
     
    
    
-    return <appContext.Provider value={{...state,loading}}>
+    return <appContext.Provider value={{...state,loading,addToCart,changeAmount,removeItem}}>
     {children}
     </appContext.Provider>
 }
