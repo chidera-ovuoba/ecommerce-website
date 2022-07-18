@@ -1,9 +1,9 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const SignIn = () => {
   return (
     <>
-      <div className='grid place-items-center'>
+      <div className='grid place-items-center pt-32'>
      <div className="grid gap-2">
       <h1 className='text-2xl font-bold mb-6'>SIGN-IN</h1>
       <div className='flex flex-col gap-4'>
@@ -16,7 +16,7 @@ const SignIn = () => {
       </div>
 
       <button className='bg-blue-800 mt-4 text-center text-md text-white p-3 rounded-lg shadow-xl place-self-start mb-5'>SIGN-IN</button>
-      <span className='place-start'> New Customer?<a href="#">Register</a></span>
+      <span className='place-start'> New Customer?<Link to="/signup">Register</Link></span>
         </div>
         </div>
       </>

@@ -9,7 +9,7 @@ if (loading) {
     return <div className='z-20 bold absolute text-3xl w-screen h-screen bg-red-500 '><h2>Loading...</h2></div>
   }
 return (
-<div>
+<div> 
 <div className='flex items-center justify-center h-screen w-screen'>
       <Slider {...ProductsData[sliderIndex].fields.image[0]} />
   </div>

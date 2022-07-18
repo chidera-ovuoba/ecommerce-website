@@ -8,9 +8,31 @@ if (action.type === 'DISPLAY_DATA') {
         const index = action.payload.checkNumber(state.sliderIndex,action.payload.number);
         return { ...state,sliderIndex:index };
     }
+    if (action.type === 'SLIDER_RIGHT') {
+        const index = action.payload.checkNumberSlider(state.sliderIndex, action.payload.number, action.payload.type);
+        return { ...state, sliderIndex: index, sliderButtonClicked: !state.sliderButtonClicked };
+    }
+      if (action.type === 'SLIDER_LEFT') {
+        const index = action.payload.checkNumberSlider(state.sliderIndex, action.payload.number, action.payload.type);
+        return { ...state, sliderIndex: index, sliderButtonClicked: !state.sliderButtonClicked };
+    }
+      if (action.type === 'SLIDER_INPUT') {
+          const index = action.payload;
+          console.log(index);
+        return { ...state, sliderIndex: index, sliderButtonClicked: !state.sliderButtonClicked };
+    }
+    if (action.type === 'SEARCHING') {
+        return { ...state, searchTerm: action.payload };
+    }
+     
+    if (action.type === 'SUBMIT_INFO') {
+        // localStorage.setItem(`login${state.loginNumber}`, JSON.stringify([{ ...action.payload }]));
+        // return { ...state };
+    }
+
     if (action.type === 'ADD_CART') {
         let items =[]
-        if (state.cart.includes(state.ProductsData[action.payload])) {
+        if (state.cart.some((item)=>state.ProductsData[action.payload].id === item.id)) {
             console.log(true);
             return { ...state }; 
         } 
@@ -19,28 +41,21 @@ if (action.type === 'DISPLAY_DATA') {
         return { ...state, cart: items ,id:action.payload};
     }
     if (action.type === 'CHANGE_AMOUNT') {
-        if (action.payload.type === 'cart') {
+        
             const tempCart = state.cart.map((item) => {
                 if (item.id === action.payload.id) {
                     return { ...item, amount: action.payload.value }
                 }
                 return item;
             })
-            return { ...state, cart: tempCart }
-        }
-        if (action.payload.type === 'singleproduct') {
-            console.log('true')
-            console.log(action.payload.value)
-            const tempCart = state.ProductsData.map((item) => {
+             const tempCart2 = state.ProductsData.map((item) => {
                 if (item.id === action.payload.id) {
                     return { ...item, amount: action.payload.value }
                 }
                 return item;
             })
-            return { ...state, ProductsData: tempCart }
+            return { ...state, cart: tempCart ,ProductsData: tempCart2}
         }
-        return { ...state };
-    }
     
 
     

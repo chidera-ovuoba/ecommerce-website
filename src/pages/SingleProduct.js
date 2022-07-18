@@ -36,7 +36,7 @@ const SingleProduct = () => {
                   </div>
                   <div className="flex p-5 justify-between border-b-2 border-gray-300 border-solid">
                       <span>Qty:</span>
-                  <input type="number" className='border-black border-b-2 w-2/4 outline-none focus:border-blue-500' value ={ProductsData[id].amount} onChange={(e)=>changeAmount(id,parseFloat(e.target.value),'singleproduct')} />
+                  <input type="number" className='border-black border-b-2 w-2/4 outline-none focus:border-blue-500' value ={ProductsData[id].amount} onChange={(e)=>changeAmount(ProductsData[id].id,parseFloat(e.target.value),'singleproduct')} />
                   </div>
                   <div className="p-5">
                       <Link className="flex px-10 py-2 gap-3 items-center justify-center text-sm uppercase text-white shadow-xl rounded-md bg-sky-400" to='/carts' onClick={()=>addToCart(id)}>
