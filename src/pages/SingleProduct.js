@@ -12,11 +12,11 @@ const SingleProduct = () => {
   return (
       <div className='pl-20 pr-10 py-10 pt-[10rem]'>
           <Link className='p-3 rounded-lg bg-white shadow-3xl mb-5' to='/'>Go Back</Link>
-          <div className="flex gap-9 my-10">
+          <div className="flex gap-20 my-10 ">
               <img src={image[0].url} alt="" className='w-[35rem]'/>
            
               
-              <div className='w-60'>
+              <div className='w-60 mr-16'>
                   <h2 className='p-5 border-b-2 border-gray-300 border-solid'>{name}</h2>
                 <div className='p-4 border-b-2 border-gray-300 border-solid gap-1 flex items-center justify-center'><BsStar/><BsStar/><BsStar/><BsStar/><BsStar/> <span className='ml-4'>2 reviews</span></div>
                   <div className='p-4 border-b-2 border-gray-300 border-solid'>

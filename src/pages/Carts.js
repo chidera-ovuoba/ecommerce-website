@@ -9,13 +9,14 @@ const Carts = () => {
   
   return (
     <>
-      <div className="pt-40">
+      <div className="pt-40 ml-20">
         <Link className='p-3 rounded-lg bg-white shadow-3xl mb-5' to={`/singleproduct/${id}`}>Go Back</Link>
-      </div>
+      
         <div className='flex gap-36 py-10 pt-[10rem]'>
       
-      <div className='ml-24'>
+           <div>
           <h3 className='text-2xl uppercase font-bold mb-6'>SHOPPING CART</h3>
+           <div className='mt-12 w-[50rem]'>
           {cart.map((item,i) => {
             const  {name,price,image,} = item.fields
          return  <div className='flex gap-11 items-center' key ={i}>
@@ -31,6 +32,7 @@ const Carts = () => {
               <button className='p-3 rounded-lg bg-white shadow-3xl' onClick= {()=>removeItem(item.id)}><MdDelete/></button>
           </div>})}
             </div>
+            </div>
             <div className="shadow-3xl h-5/6 w-1/4">
                   <div className="p-5  border-b-2 border-gray-300 border-solid">
                     <h3 className='text-2xl uppercase font-bold mb-6'>SUBTOTAL ({amount}) ITEMS</h3>
@@ -42,7 +44,8 @@ const Carts = () => {
                       </div>
                 </div>
                </div>
-      </div>
+        </div>
+        </div>
       </>
   )
 }

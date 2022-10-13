@@ -2,6 +2,7 @@ import React from 'react'
 import Slider from '../components/Silder';
 import { useGlobalContext } from '../context';
 import Product from '../components/Product';
+import Products from './Products';
 const Home = () => {
   const { loading,ProductsData,sliderIndex } = useGlobalContext();
 // console.log(sliderIndex,"home slider")
@@ -10,15 +11,10 @@ if (loading) {
   }
 return (
 <div> 
-<div className='flex items-center justify-center h-screen w-screen'>
+<div className='grid place-content-center pt-32'>
       <Slider {...ProductsData[sliderIndex].fields.image[0]} />
   </div>
-      <div className='mx-20 grid grid-cols-3 place-items-center gap-2 mb-4'>
-      {ProductsData.map((item, i) => {
-        return <Product {...item.fields} key={item.id} id={i} />
-      })}
-     
-      </div>
+      <Products/>
       </div>
   )
 }
