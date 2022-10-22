@@ -5,9 +5,15 @@ import Product from '../components/Product';
 import Products from './Products';
 const Home = () => {
   const { loading,ProductsData,sliderIndex } = useGlobalContext();
-// console.log(sliderIndex,"home slider")
 if (loading) {
-    return <div className='z-20 bold absolute text-3xl w-screen h-screen bg-red-500 '><h2>Loading...</h2></div>
+    return  <div class="container_loader">
+        <div class="spinner">
+            <div class="spinner-text">Loading...</div>
+            <div class="spinner-sector spinner-sector-red"></div>
+            <div class="spinner-sector spinner-sector-blue"></div>
+            <div class="spinner-sector spinner-sector-green"></div>
+        </div>
+    </div>
   }
 return (
 <div> 
