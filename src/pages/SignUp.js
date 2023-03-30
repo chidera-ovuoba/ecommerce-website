@@ -6,6 +6,8 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
+
+
   return (
       <div className='grid place-items-center pt-28 pb-7'>
       <div className="grid gap-2">

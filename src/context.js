@@ -10,7 +10,7 @@ const initialState = {
     id: 0,
     sliderButtonClicked: false,
     searchTerm: '',
-    loginNumber: 1,
+    loginNumber: 0,
     userInfo: [localStorage.getItem(`login1`)],
     passwordError:false
 }
@@ -56,7 +56,7 @@ function AppProvider({ children }) {
       dispatch({type:'GET_TOTAL'})  
     },[state.cart])
     
-    function submitInfo(data) {
+    async function submitInfo(data) {
         const { name, email, password, confirm } = data;
         if (name && email && password && confirm) {
             if (password !== confirm) {
@@ -64,14 +64,29 @@ function AppProvider({ children }) {
                 console.log(state.passwordError)
           return
             }
+
+            // // if () {
+            // JSON.parse(localStorage.getItem('clientData')).map((client) => {
+                 
+            //  })
+            // // }
+            const stripe = require('stripe')('sk_test_51LRDHKLSpBcyIvn4hJddLZouOmNNP7Tbl5rvi6LZ2QU1C3Mp5oJrD7igJdlFq9rcFKKXWjCtuM5JhwBGBM43UufX00d0ZMeRzi');
+            const customerQuery = await stripe.customers.search({
+                query: `name:${name} AND metadata['password']:${password} AND email:${email}`,
+            });
+            if (customerQuery && false) {
+                const customer = await stripe.customers.create({
+                    name: name,
+                    email: email,
+                    metadata:{password,confirm}
+                });
+            }
             
-            state.loginNumber += 1;
-            console.log(state.loginNumber)       
-            return dispatch({ type: "SUBMIT_INFO", payload: data })     
+            // state.loginNumber += 1;
+            // console.log(state.loginNumber)       
+            // return dispatch({ type: "SUBMIT_INFO", payload: data })     
         }
         
-        
-       return
     }
 
 

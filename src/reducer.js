@@ -26,8 +26,8 @@ if (action.type === 'DISPLAY_DATA') {
     }
      
     if (action.type === 'SUBMIT_INFO') {
-        // localStorage.setItem(`login${state.loginNumber}`, JSON.stringify([{ ...action.payload }]));
-        // return { ...state };
+        localStorage.setItem('ClientData', JSON.stringify([{ ...action.payload,key:`login${state.loginNumber}` }]));
+        return { ...state };
     }
 
     if (action.type === 'ADD_CART') {
